@@ -1,0 +1,17 @@
+{
+  "name": "coronablocker",
+  "version": "0.0.1",
+  "description": "Block Covid-19 related news on a number of social networks",
+  "main": "index.js",
+  "author": "Michele Riva <ciao@micheleriva.it>",
+  "scripts": {
+    "build": "microbundle     -i main.js -f umd --name coronablocker -o dist --inline all",
+    "dev": "microbundle watch -i main.js -f umd --name coronablocker -o dist --inline all",
+    "pre-release": "rm -rf node_modules && npm version patch"
+  },
+  "devDependencies": {
+    "microbundle": "^0.9.0"
+  },
+  "license": "GPLv3",
+  "private": false
+}
