@@ -104,12 +104,12 @@ async function disableCorona() {
 
   switch (currentChannel) {
     case "facebook":
-      removePosts("facebook", "post");
-      removePosts("facebook", "link");
+      removePosts(currentChannel, "post");
+      removePosts(currentChannel, "link");
       break;
     case "linkedin":
-      removePosts("linkedin", "feed");
-      removePosts("linkedin", "news");
+      removePosts(currentChannel, "feed");
+      removePosts(currentChannel, "news");
       break;
     default:
       break;
