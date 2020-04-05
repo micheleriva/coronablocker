@@ -5,8 +5,8 @@
   "main": "index.js",
   "author": "Michele Riva <ciao@micheleriva.it>",
   "scripts": {
-    "build": "microbundle     -i main.js -f umd --name coronablocker -o dist --inline all",
-    "dev": "microbundle watch -i main.js -f umd --name coronablocker -o dist --inline all",
+    "build": "microbundle     -i ./src/main.js -f umd --name coronablocker -o dist --inline all",
+    "dev": "microbundle watch -i ./src/main.js -f umd --name coronablocker -o dist --inline all",
     "pre-release": "rm -rf node_modules && npm version patch"
   },
   "devDependencies": {

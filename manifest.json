@@ -4,10 +4,15 @@
   "author": "Michele Riva,",
   "description": "Block Covid-19 related news on a number of social networks",
   "manifest_version": 2,
-  "permissions": ["<all_urls>", "storage"],
+  "permissions": [
+    "https://www.facebook.com",
+    "https://www.linkedin.com",
+    "storage",
+    "tabs"
+  ],
   "browser_action": {
     "default_title": "CoronaBlocker",
-    "default_popup": "popup.html"
+    "default_popup": "./src/popup.html"
   },
   "content_scripts": [
     {

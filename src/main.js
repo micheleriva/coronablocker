@@ -1,7 +1,14 @@
 const keywords = ["coronavirus", "covid-19", "covid"];
 
 const extractChannel = () => {
-  switch (window.location.hostname) {
+  let url;
+
+  chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
+    url = tabs[0].url;
+    console.log(url);
+  });
+
+  switch (url) {
     case "www.facebook.com":
       return "facebook";
     case "www.linkedin.com":
