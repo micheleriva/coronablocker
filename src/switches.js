@@ -4,7 +4,6 @@ const checkbox_disable_all_websites = document.getElementById(
 
 checkbox_disable_all_websites.addEventListener("change", function () {
   chrome.storage.sync.set({ disableAllWebsites: this.checked });
-  checkbox_disable_website.checked = true;
 
   setTimeout(() => {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -15,7 +14,6 @@ checkbox_disable_all_websites.addEventListener("change", function () {
 
 chrome.storage.sync.get("disableAllWebsites", (bool) => {
   checkbox_disable_all_websites.checked = bool.disableAllWebsites;
-  checkbox_disable_website.checked = bool.disableAllWebsites;
 });
 
 chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {

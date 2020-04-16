@@ -119,22 +119,13 @@ async function disableCorona() {
 }
 
 chrome.storage.sync.get(
-  ["disableAllWebsites", "disable_facebook", "disable_linkedin"],
+  ["disableAllWebsites", `disable_${extractChannel()}`],
   (val) => {
-    const shouldDisableFacebook =
-      extractChannel() === "facebook" && val.disable_facebook;
+    if (val.disableAllWebsites) return;
+    if (val[`disable_${extractChannel()}`]) return;
 
-    const shouldDisableLinkedin =
-      extractChannel() === "linkedin" && val.disable_linkedin;
-
-    if (
-      val.disableAllWebsites ||
-      shouldDisableFacebook ||
-      shouldDisableLinkedin
-    ) {
-      document.addEventListener("load", disableCorona);
-      document.addEventListener("DOMNodeInserted", disableCorona);
-    }
+    document.addEventListener("load", disableCorona);
+    document.addEventListener("DOMNodeInserted", disableCorona);
   }
 );
 
