@@ -5,10 +5,10 @@
   "description": "Block Covid-19 related news on a number of social networks",
   "manifest_version": 2,
   "permissions": [
-    "https://www.facebook.com",
-    "https://www.linkedin.com",
+    "tabs",
     "storage",
-    "tabs"
+    "https://www.facebook.com",
+    "https://www.linkedin.com"
   ],
   "browser_action": {
     "default_title": "CoronaBlocker",
@@ -17,7 +17,7 @@
   "content_scripts": [
     {
       "matches": ["https://*/*"],
-      "js": ["dist/coronablocker.umd.js"]
+      "js": ["src/main.js"]
     }
   ],
   "icons": {

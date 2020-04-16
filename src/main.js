@@ -1,16 +1,11 @@
 const keywords = ["coronavirus", "covid-19", "covid"];
 
 const extractChannel = () => {
-  let url;
-
-  chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
-    url = tabs[0].url;
-    console.log(url);
-  });
-
-  switch (url) {
+  switch (window.location.host) {
+    case "facebook.com":
     case "www.facebook.com":
       return "facebook";
+    case "linkedin.com":
     case "www.linkedin.com":
       return "linkedin";
     default:
@@ -88,10 +83,10 @@ const removePosts = (channel, target) => {
       if (content.includes(keyword)) {
         switch (channel) {
           case "facebook":
-            removeFacebookItem(content, target);
+            removeFacebookItem(item, target);
             break;
           case "linkedin":
-            removeLinkedinItem(content, target);
+            removeLinkedinItem(item, target);
             break;
           default:
             break;
