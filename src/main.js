@@ -118,5 +118,28 @@ async function disableCorona() {
   }
 }
 
-document.addEventListener("load", disableCorona);
-document.addEventListener("DOMNodeInserted", disableCorona);
+chrome.storage.sync.get(
+  ["disableAllWebsites", "disable_facebook", "disable_linkedin"],
+  (val) => {
+    const shouldDisableFacebook =
+      extractChannel() === "facebook" && val.disable_facebook;
+
+    const shouldDisableLinkedin =
+      extractChannel() === "linkedin" && val.disable_linkedin;
+
+    if (
+      val.disableAllWebsites ||
+      shouldDisableFacebook ||
+      shouldDisableLinkedin
+    ) {
+      document.addEventListener("load", disableCorona);
+      document.addEventListener("DOMNodeInserted", disableCorona);
+    }
+  }
+);
+
+chrome.runtime.onMessage.addListener((request) => {
+  console.log(request);
+  if (request === "reload") window.location.reload();
+  return true;
+});
