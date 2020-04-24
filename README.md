@@ -4,4 +4,4 @@ Download the blocker for free!
 https://chrome.google.com/webstore/detail/covid-19-blocker/lpjdmliechiikmhpebmodbnekfecbacc
 
 # License
-Licensed over the [GPLv3] License
+Licensed over the [GPLv3](/LICENSE.md) License
