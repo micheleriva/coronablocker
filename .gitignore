@@ -145,6 +145,9 @@ Temporary Items
 !.vscode/launch.json
 !.vscode/extensions.json
 
+### IntelliJ ###
+.idea
+
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history

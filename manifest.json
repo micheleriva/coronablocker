@@ -7,8 +7,9 @@
   "permissions": [
     "tabs",
     "storage",
-    "https://www.facebook.com",
-    "https://www.linkedin.com"
+    "https://www.facebook.com/",
+    "https://www.linkedin.com/",
+    "https://www.twitter.com/"
   ],
   "browser_action": {
     "default_title": "CoronaBlocker",

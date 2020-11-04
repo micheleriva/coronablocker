@@ -8,6 +8,9 @@ const extractChannel = () => {
     case "linkedin.com":
     case "www.linkedin.com":
       return "linkedin";
+    case "twitter.com":
+    case "www.twitter.com":
+      return "twitter";
     default:
       return null;
   }
@@ -30,6 +33,15 @@ const computeLinkedinQuery = (target) => {
       return "feed-shared-update-v2";
     case "news":
       return "feed-shared-news-module__storyline";
+    default:
+      return "";
+  }
+};
+
+const computeTwitterQuery = (target) => {
+  switch (target) {
+    case "post":
+      return "article[role='article']";
     default:
       return "";
   }
@@ -59,6 +71,16 @@ const removeLinkedinItem = (item, target) => {
   }
 };
 
+const removeTwitterItem = (item, target) => {
+  switch (target) {
+    case "post":
+      item.remove();
+      break;
+    default:
+      break;
+  }
+};
+
 const removePosts = (channel, target) => {
   let items;
   let query;
@@ -71,6 +93,10 @@ const removePosts = (channel, target) => {
     case "linkedin":
       query = computeLinkedinQuery(target);
       items = document.getElementsByClassName(query);
+      break;
+    case "twitter":
+      query = computeTwitterQuery(target);
+      items = document.querySelectorAll(query);
       break;
     default:
       break;
@@ -87,6 +113,9 @@ const removePosts = (channel, target) => {
             break;
           case "linkedin":
             removeLinkedinItem(item, target);
+            break;
+          case "twitter":
+            removeTwitterItem(item, target);
             break;
           default:
             break;
@@ -112,6 +141,9 @@ async function disableCorona() {
     case "linkedin":
       removePosts(currentChannel, "feed");
       removePosts(currentChannel, "news");
+      break;
+    case "twitter":
+      removePosts(currentChannel, "post");
       break;
     default:
       break;
